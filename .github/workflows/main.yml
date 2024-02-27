@@ -29,4 +29,5 @@
             - name: Unit Testing 1
               run: |
                  cd ciphers_project
+                 python3 manage.py makemigration 
                  python3 manage.py test
