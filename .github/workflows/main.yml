@@ -30,7 +30,7 @@
               run: |
                  cd ciphers_project
                  python3 manage.py test
-                 - name: Build and push the image
+               
             - name: Build and push image   
               run: |
                    docker login --username abankhele --password ${{secrets.ACCESS_TOKEN}} ghcr.io
