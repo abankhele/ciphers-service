@@ -1,5 +1,5 @@
 
-    name: Run The Tests
+    name: Run The Tests, Build the Image
     
     on:
         push:
@@ -26,8 +26,14 @@
                  python -m pip install --upgrade pip
                  pip install -r requirements.txt
                     
-            - name: Unit Testing 1
+            - name: Unit Testing
               run: |
                  cd ciphers_project
-                 python3 manage.py makemigration 
                  python3 manage.py test
+                 - name: Build and push the image
+            - name: Build and push image   
+              run: |
+                   docker login --username abankhele --password ${{secrets.ACCESS_TOKEN}} ghcr.io
+                   docker build -t ghcr.io/abankhele/ciphers-service:latest --file Dockerfile .
+                   docker push ghcr.io/abankhele/ciphers-service:latest
+               
