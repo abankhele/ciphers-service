@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-p^tayq7&u_kzxz5&%zz^n_^!apqc0f(k2#%ne3)^yhp^29q&6u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.onrender.com'] 
+ALLOWED_HOSTS = ['.onrender.com', 'localhost', '127.0.0.1']
+
 
 
 # Application definition
@@ -39,12 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'api.apps.ApiConfig',
     'rest_framework',
+    'corsheaders'
     
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -124,3 +127,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CORS_ALLOWED_ORIGINS=[
+    "https://pages.github.iu.edu",
+]
